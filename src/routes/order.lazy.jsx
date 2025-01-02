@@ -1,12 +1,17 @@
-import Pizza from './Pizza.jsx'
+import Pizza from '../Pizza.jsx'
 import { useContext, useEffect, useState } from 'react'
-import Cart from './Cart.jsx'
-import { CartContext } from './contexts.jsx'
+import Cart from '../Cart.jsx'
+import { CartContext } from '../contexts.jsx'
+import { createLazyFileRoute } from '@tanstack/react-router'
 
 // Format number to USD
 const intl = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
+})
+
+export const Route = createLazyFileRoute('/order')({
+    component: Order,
 })
 
 export default function Order() {
@@ -135,7 +140,7 @@ export default function Order() {
                     )}
                 </form>
             </div>
-            {loading ? <h2>Loading...</h2> : <Cart cart={cart} />}
+            {loading ? <h2>Loading...</h2> : <Cart cart={cart} checkout={checkout} />}
         </div>
     )
 }

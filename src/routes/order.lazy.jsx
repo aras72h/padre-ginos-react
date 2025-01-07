@@ -140,7 +140,11 @@ export default function Order() {
                     )}
                 </form>
             </div>
-            {loading ? <h2>Loading...</h2> : <Cart cart={cart} checkout={checkout} />}
+            {loading ? (
+                <h2>Loading...</h2>
+            ) : (
+                <Cart cart={cart} checkout={checkout} />
+            )}
         </div>
     )
 }
